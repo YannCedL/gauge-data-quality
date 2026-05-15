@@ -38,3 +38,5 @@ def check_freshness(timestamp_str: str, max_age_days: int = 30) -> bool:
         return age <= max_age_days
     except Exception:
         return False
+
+
