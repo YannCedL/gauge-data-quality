@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/gauge_data_quality/__init__.py
+src/gauge_data_quality/validator.py
+src/gauge_data_quality.egg-info/PKG-INFO
+src/gauge_data_quality.egg-info/SOURCES.txt
+src/gauge_data_quality.egg-info/dependency_links.txt
+src/gauge_data_quality.egg-info/requires.txt
+src/gauge_data_quality.egg-info/top_level.txt
+tests/test_validator.py

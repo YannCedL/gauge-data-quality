@@ -1,0 +1,30 @@
+Metadata-Version: 2.4
+Name: gauge-data-quality
+Version: 1.0.0
+Summary: Data quality and validation engine for Genesis OSINT Ecosystem
+Author: Genesis OSINT Team
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic>=2.0.0
+Requires-Dist: genesis-core>=1.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+
+# gauge-data-quality
+
+data quality and completeness checker
+
+## install
+
+```bash
+pip install -e .
+```
+
+## usage
+
+```python
+from gauge_data_quality import validate_result
+
+report = validate_result(data_dict)
+print(report.is_valid)
+```
