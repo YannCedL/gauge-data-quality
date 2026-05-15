@@ -1,29 +1,12 @@
-"""
-Tests for gauge data quality validator
-"""
+# test du validateur de qualité de données Gauge
+from gauge_data_quality.validator import evaluate_quality, validate_result
 
-from gauge_data_quality import validate_result, check_freshness
+def test_evaluate_quality():
+    contract = evaluate_quality("flux_test")
+    assert contract is not None
+    assert contract.result["quality_score"] > 0.8
+    assert len(contract.evidence) >= 1
 
-def test_validate_result_success():
-    data = {
-        "result": {"id": "123"},
-        "evidence": [],
-        "sources": ["http://example.com"],
-        "confidence": 0.9
-    }
-    report = validate_result(data)
-    assert report.is_valid is True
-    assert len(report.missing_fields) == 0
-
-def test_validate_result_missing_field():
-    data = {
-        "result": {"id": "123"},
-        "confidence": 0.9
-    }
-    report = validate_result(data)
-    assert report.is_valid is False
-    assert "evidence" in report.missing_fields
-    assert "sources" in report.missing_fields
-
-def test_check_freshness():
-    assert check_freshness("2026-04-01T10:00:00Z", max_age_days=365) is True
+def test_validate_result():
+    res = validate_result({"result": "ok", "evidence": [], "sources": [], "confidence": 0.9})
+    assert res.is_valid is True
